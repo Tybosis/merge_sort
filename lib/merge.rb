@@ -1,6 +1,17 @@
-# Module to contain merge sort method
-module Sorting
-  def self.merge_sort(array)
-    array
+# recursive strategy modified from rosettacode
+def merge_sort(array)
+  return array if array.length <= 1
+  midway  = (array.length / 2)
+  left    = merge_sort(array[0...midway])
+  right   = merge_sort(array[midway..-1])
+  merge(left, right)
+end
+
+def merge(left, right)
+  results = []
+  return left + right if left.last <= right.first
+  until left.empty? || right.empty?
+    results << (left[0] <= right[0] ? left.shift : right.shift)
   end
+  results + left + right
 end
