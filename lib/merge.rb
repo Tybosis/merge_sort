@@ -8,10 +8,10 @@ def merge_sort(array)
 end
 
 def merge(left, right)
-  results = []
+  combination = []
   return left + right if left.last <= right.first
   until left.empty? || right.empty?
-    results << (left[0] <= right[0] ? left.shift : right.shift)
+    combination << (left[0] <= right[0] ? left.shift : right.shift)
   end
-  results + left + right
+  combination.concat(left).concat(right)
 end
